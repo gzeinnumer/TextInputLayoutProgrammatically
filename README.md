@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
 - Preview
 <p align="center">
-  <img src="https://github.com/gzeinnumer/TextInputLayoutProgrammatically/blob/main/preview/example1.jpg" width="500"/>
+  <img src="https://github.com/gzeinnumer/TextInputLayoutProgrammatically/blob/main/preview/example.jpg" width="500"/>
 </p>
 
 ---
