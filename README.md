@@ -4,19 +4,25 @@
 - `temp_layout.xml`
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.textfield.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/text_input_layout"
-    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_height="wrap_content">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/text_input_edit_text"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter User Name" />
-</com.google.android.material.textfield.TextInputLayout>
+        android:layout_margin="10dp"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter User Name" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
 ```
 
 - `main_activity.xml`
@@ -52,17 +58,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayout ln = findViewById(R.id.ln);
-        View v = LayoutInflater.from(this).inflate(R.layout.temp_layout, null);
-
-        TextInputLayout textInputLayout = v.findViewById(R.id.text_input_layout);
-        TextInputEditText textInputEditText = v.findViewById(R.id.text_input_edit_text);
-        textInputLayout.setHint("Please Enter User Name");
-        textInputEditText.setText("Text Here");
-        ln.addView(v);
+        LinearLayout linearLayout = findViewById(R.id.ln);
+        final View[] views = new View[2];
+        for (int i = 0; i < 2; i++) {
+            views[i] = LayoutInflater.from(this).inflate(R.layout.temp_layout, null);
+            TextInputLayout textInputLayout = views[i].findViewById(R.id.text_input_layout);
+            TextInputEditText textInputEditText = views[i].findViewById(R.id.text_input_edit_text);
+            textInputLayout.setHint("Please Enter User Name");
+            textInputEditText.setText("Text Here");
+            linearLayout.addView(views[i]);
+        }
     }
 }
 ```
+
+- Preview
+<p align="center">
+  <img src="https://github.com/gzeinnumer/TextInputLayoutProgrammatically/blob/main/preview/example1.jpg" width="500"/>
+</p>
 
 ---
 
